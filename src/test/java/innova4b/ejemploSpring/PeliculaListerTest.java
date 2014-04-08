@@ -2,10 +2,12 @@ package innova4b.ejemploSpring;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mysql.jdbc.Connection;
+
 
 public class PeliculaListerTest {
 
@@ -22,8 +24,7 @@ public class PeliculaListerTest {
 	public void setUp() throws Exception {
 		peliculaFinderFromText = new PeliculaFinderFromText();
 		peliculaFinderFromText.setResource("resources/peliculas.txt");
-		DBUtil dbUtil = new DBUtil(URL, USER, PASSWORD);
-		connection = (Connection) dbUtil.getConnection();
+		connection = ConnectionFactory.createConnection(URL, USER, PASSWORD);
 		peliculaFinderFromDB = new PeliculaFinderFromDB(connection);
 		
 	}

@@ -9,12 +9,14 @@ import org.junit.Test;
 
 public class PeliculaFinderFromDBTest {
 
+	private static final String USER = "root";
+	private static final String PASSWORD = "root";
+	private static final String URL = "jdbc:mysql://localhost/movies";
 	PeliculaFinderFromDB peliculaFinderFromDB;
 	
 	@Before
 	public void setUp() throws Exception {
-		DBUtil dbUtil = new DBUtil("jdbc:mysql://localhost/movies", "root", "root");
-		Connection connection = dbUtil.getConnection();
+		Connection connection = ConnectionFactory.createConnection(URL, USER, PASSWORD);
 		peliculaFinderFromDB = new PeliculaFinderFromDB(connection);
 	}
 
