@@ -1,0 +1,8 @@
+[
+{"director":"Almodovar", "nombre":"Hable con Ella"},
+{"director":"Almodovar", "nombre":"Todo sobre mi madre"},
+{"director":"Spilberg", "nombre":"E.T"},
+{"director":"Spilberg", "nombre":"Jurasic Park"},
+{"director":"Estwood", "nombre":"Million Dollar Baby"},
+{"director":"Estwood", "nombre":"Invictus"}
+]
