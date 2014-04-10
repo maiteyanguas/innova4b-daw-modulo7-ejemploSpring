@@ -16,13 +16,15 @@
 	</bean>
 	 
 	<bean id="peliculaFinderFromDB" class="innova4b.ejemploSpring.PeliculaFinderFromDB">
-    	<constructor-arg ref="connection"/>   
+    	<constructor-arg ref="dataSource"/>   
     </bean>
     
-    <bean id="connection" class="innova4b.ejemploSpring.ConnectionFactory" factory-method="createConnection">
-    	<constructor-arg name="url" value="jdbc:mysql://localhost/movies"/>
-    	<constructor-arg name="user" value="root" />
-    	<constructor-arg name="pwd" value="root"/>
+    <bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+       <property name="url" value="jdbc:mysql://localhost:3306/movies"/>
+       <property name="username" value="root"/>
+       <property name="password" value="root"/>
     </bean>
     
     <bean id="peliculaListerFromText" class="innova4b.ejemploSpring.PeliculaLister">

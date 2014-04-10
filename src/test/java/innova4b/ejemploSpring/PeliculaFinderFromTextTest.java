@@ -4,16 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class PeliculaFinderFromTextTest {
 
-	PeliculaFinderFromText peliculaFinder;
+PeliculaFinderFromText peliculaFinder;
 	
 	@Before
 	public void setUp() throws Exception {
-		peliculaFinder = new PeliculaFinderFromText();
-		peliculaFinder.setResource("resources/peliculas.txt");
-		
+		ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
+		peliculaFinder = context.getBean("peliculaFinderFromText",PeliculaFinderFromText.class);
 	}
 
 	@Test

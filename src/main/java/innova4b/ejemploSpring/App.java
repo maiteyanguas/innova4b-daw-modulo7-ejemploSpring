@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App 
 {
@@ -12,9 +14,8 @@ public class App
     {
         String director = args[0];
         ObjectMapper mapper = new ObjectMapper();
-        PeliculaFinderFromText finder = new PeliculaFinderFromText();
-        finder.setResource("resources/peliculas.txt");
-        PeliculaLister peliculaLister = new PeliculaLister(finder);
+        ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
+        PeliculaLister peliculaLister = context.getBean("peliculaListerFromText",PeliculaLister.class);
 		String peliculas = "";
         try {
 			peliculas = mapper.writeValueAsString(peliculaLister.findAllByDirector(director));
