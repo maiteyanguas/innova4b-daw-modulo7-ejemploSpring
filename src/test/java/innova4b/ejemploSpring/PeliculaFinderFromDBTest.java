@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class PeliculaFinderFromDBTest {
@@ -12,8 +13,8 @@ public class PeliculaFinderFromDBTest {
 PeliculaFinderFromDB peliculaFinderFromDB;
 	
 	@Before
-	public void setUp() throws Exception {
-		ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
+	public void setUp() throws Exception {		
+		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConfig.class);
 		peliculaFinderFromDB = context.getBean("peliculaFinderFromDB",PeliculaFinderFromDB.class);
 	}
 
