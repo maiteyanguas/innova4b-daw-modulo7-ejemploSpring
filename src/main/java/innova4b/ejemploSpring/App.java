@@ -15,7 +15,7 @@ public class App
     {
         String director = args[0];
         ObjectMapper mapper = new ObjectMapper();
-        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConfig.class);
+        ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
         PeliculaLister peliculaLister = context.getBean("peliculaListerFromText",PeliculaLister.class);
 		String peliculas = "";
         try {

@@ -14,7 +14,8 @@ PeliculaFinderFromDB peliculaFinderFromDB;
 	
 	@Before
 	public void setUp() throws Exception {		
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextConfig.class);
+		ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
+
 		peliculaFinderFromDB = context.getBean("peliculaFinderFromDB",PeliculaFinderFromDB.class);
 	}
 

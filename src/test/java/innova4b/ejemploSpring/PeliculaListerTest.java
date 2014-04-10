@@ -15,7 +15,7 @@ public class PeliculaListerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		context = new AnnotationConfigApplicationContext(ApplicationContextConfig.class);
+		context = new ClassPathXmlApplicationContext("innova4b/ejemploSpring/application-context.xml");
 	}
 
 	@Test
