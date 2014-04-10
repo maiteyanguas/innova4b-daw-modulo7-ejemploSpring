@@ -7,18 +7,14 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean id="peliculaFinderFromText" class="innova4b.ejemploSpring.PeliculaFinderFromText">
-        <property name="resource" ref ="resource"/>
-    </bean>
 
-	<bean id="resource" class="java.lang.String" >
-		<constructor-arg index="0" value="resources/peliculas.txt"/>
+   	<context:annotation-config/>
+   	<context:component-scan base-package="innova4b.ejemploSpring"></context:component-scan>
+
+	<bean id="peliculaFinderFromText" class="innova4b.ejemploSpring.PeliculaFinderFromText">
+		<property name="resource" value="resources/peliculas.txt"/>
 	</bean>
-	 
-	<bean id="peliculaFinderFromDB" class="innova4b.ejemploSpring.PeliculaFinderFromDB">
-    	<constructor-arg ref="dataSource"/>   
-    </bean>
-    
+
     <bean id="dataSource"
     class="org.springframework.jdbc.datasource.DriverManagerDataSource">
        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
