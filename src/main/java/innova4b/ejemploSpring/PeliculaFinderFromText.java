@@ -27,4 +27,8 @@ public class PeliculaFinderFromText implements PeliculaFinder {
 		return peliculas;
 	}
 
+	public String getResource() {
+		return resource;
+	}
+
 }
