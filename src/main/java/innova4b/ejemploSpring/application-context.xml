@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context 
-	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <bean id="peliculaFinderFromText" class="innova4b.ejemploSpring.PeliculaFinderFromText">
         <property name="resource" value="resources/peliculas.txt"/>
@@ -30,6 +33,20 @@
     <bean id="peliculaListerFromDB" class="innova4b.ejemploSpring.PeliculaLister">
     	<constructor-arg ref="peliculaFinderFromDB"/>
     </bean>
+    
+    <bean id="loggingService" class="innova4b.ejemploSpring.LoggingService"></bean>
+    
+    <aop:config>
+    	<aop:aspect id="loggingService" ref="loggingService">
+    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.PeliculaFinder.findAll(..))" id="peliculaFinderPointCut"/>
+    		<aop:after-returning pointcut-ref="peliculaFinderPointCut" returning="peliculas"  method="logueoPeliculas"/>
+    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.*.*(..))" id="methodPointCut"/>
+    		<aop:before  pointcut-ref="methodPointCut"  method="logueoPrevio"/>
+    		<aop:after  pointcut-ref="methodPointCut"  method="logueoPosterior"/>
+    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.PeliculaLister.*(..))" id="methodAroundPointCut"/>
+    		<aop:around  pointcut-ref="methodAroundPointCut"  method="logueoDurante"/>
+    	</aop:aspect>
+    </aop:config>
 
     
 
