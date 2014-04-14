@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class PeliculaLister {
+	
+	private static final Logger logger = Logger.getLogger(PeliculaLister.class);
 	
 	private PeliculaFinder finder;
 	
@@ -20,6 +24,11 @@ public class PeliculaLister {
 			if (pelicula.getDirector().equals(director))
 				peliculas.add(pelicula);
 		}
+		logger.debug("Películas recuperadas:"+peliculas.size());
+		logger.info("Películas recuperadas:"+peliculas.size());
+		logger.warn("Películas recuperadas:"+peliculas.size());
+		logger.error("Películas recuperadas:"+peliculas.size());
+		
 		return peliculas;
 	}
 	
