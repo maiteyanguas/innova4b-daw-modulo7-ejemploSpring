@@ -36,19 +36,7 @@
     
     <bean id="loggingService" class="innova4b.ejemploSpring.LoggingService"></bean>
     
-    <aop:config>
-    	<aop:aspect id="loggingService" ref="loggingService">
-    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.PeliculaFinder.findAll(..))" id="peliculaFinderPointCut"/>
-    		<aop:after-returning pointcut-ref="peliculaFinderPointCut" returning="peliculas"  method="logueoPeliculas"/>
-    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.*.*(..))" id="methodPointCut"/>
-    		<aop:before  pointcut-ref="methodPointCut"  method="logueoPrevio"/>
-    		<aop:after  pointcut-ref="methodPointCut"  method="logueoPosterior"/>
-    		<aop:pointcut expression="execution(* innova4b.ejemploSpring.PeliculaLister.*(..))" id="methodAroundPointCut"/>
-    		<aop:around  pointcut-ref="methodAroundPointCut"  method="logueoDurante"/>
-    	</aop:aspect>
-    </aop:config>
-
-    
-
+    <aop:aspectj-autoproxy />
+      
 </beans>
 
