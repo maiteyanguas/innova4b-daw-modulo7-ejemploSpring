@@ -20,13 +20,10 @@ public class App
         try {
 			peliculas = mapper.writeValueAsString(peliculaLister.findAllByDirector(director));
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         System.out.println("peliculas: "+ peliculas);
